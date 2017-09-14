@@ -19,13 +19,13 @@ func NewDog(id uint32, name string, age uint8, price float32) *Dog {
 func main() {
 
 	//Json Encode
-	dog1 := NewDog(1, "Dave", 10, 1000.00)
+	dog1 := NewDog(1, "狗狗", 10, 1000.00)
 	json1, _ := json.Marshal(dog1)
-	jsonstr1 := string(json1)
-	fmt.Println(jsonstr1) //price不可见
+	jsonStr1 := string(json1)
+	fmt.Println(jsonStr1) //price不可见
 
 	//Json Decode
 	var dog2 Dog
-	err := json.Unmarshal([]byte(jsonstr1), &dog2)
+	err := json.Unmarshal([]byte(jsonStr1), &dog2)
 	fmt.Println(err, dog2)
 }
