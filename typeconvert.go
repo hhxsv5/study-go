@@ -28,6 +28,6 @@ func main() {
 	//string to int
 	fmt.Println(strconv.Atoi(str))
 
-	//string to int64
+	//string to float64
 	fmt.Println(strconv.ParseFloat(str, 64))
 }

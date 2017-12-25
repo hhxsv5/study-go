@@ -74,5 +74,4 @@ func main() {
 
 	//调用String()函数来打印输出
 	fmt.Println(book3)
-
 }

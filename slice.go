@@ -9,7 +9,7 @@ func main() {
 	//申明：切片不需要说明长度
 	var slice1 []int
 
-	if slice1 == nil {
+	if len(slice1) == 0 {
 		fmt.Println("slice1是空切片", len(slice1), cap(slice1))
 	}
 
@@ -17,7 +17,7 @@ func main() {
 	var slice2 []int = make([]int, 5, 10)
 	//申明：或简写：slice2 := make([]int, 5, 10)
 
-	if slice2 == nil {
+	if len(slice2) {
 		fmt.Println("slice2是空切片", len(slice2), cap(slice2))
 	} else {
 		fmt.Println(slice2)
