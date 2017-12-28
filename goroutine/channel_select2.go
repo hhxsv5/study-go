@@ -2,15 +2,23 @@ package main
 
 import (
 	"fmt"
-	"os"
+	"runtime"
+	"time"
+	"strconv"
 )
 
 func main() {
+	//设置 goroutine 并行执行的数量，默认为1，没有真正的并发执行。如果不希望修改任何源代码，同样可以通过设置环境变量 GOMAXPROCS 为目标值。
+	runtime.GOMAXPROCS(2)
+
+	start := time.Now().UnixNano() / 1000
+
 	c1, c2 := make(chan int, 3), make(chan int)
 
 	//sub goroutine 消费数据
 	go func() {
 		d, ok, s := 0, false, ""
+	Loop:
 		for {
 			select { //随机选择可用的channel，读取数据
 			case d, ok = <-c1:
@@ -24,7 +32,7 @@ func main() {
 				fmt.Println(s, d)
 			} else {
 				fmt.Println(s, "is closed")
-				os.Exit(0)
+				break Loop
 			}
 		}
 	}()
@@ -41,4 +49,8 @@ func main() {
 	//close(c1)
 
 	//select {} //没有可用 channel，阻塞 main goroutine。
+
+	end := time.Now().UnixNano() / 1000
+
+	fmt.Println("cost", strconv.FormatInt(end-start, 10))
 }
