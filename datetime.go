@@ -31,4 +31,9 @@ func main() {
 	//Since()
 	fmt.Println(total, time.Since(t1))
 	fmt.Println(total, reflect.TypeOf(t1))
+
+	//时区转换，比如打开数据库连接时指定好时区：loc=Asia%2FShanghai
+	loc, _ := time.LoadLocation("Asia/Shanghai")
+	t, _ := time.ParseInLocation("2006-01-02 15:04:05", "2018-01-08 14:03:03", loc)
+	fmt.Println(t.Unix(), t.String())
 }
