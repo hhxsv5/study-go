@@ -5,7 +5,6 @@ import (
 	"runtime"
 	"time"
 	"strconv"
-	"errors"
 )
 
 func main() {
